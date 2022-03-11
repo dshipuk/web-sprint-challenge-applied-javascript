@@ -61,7 +61,7 @@ const cardAppender = (selector) => {
   axios.get('http://localhost:5001/api/articles')
   .then(resp => {
   Object.values(resp.data.articles).flat().map(ele => {
-    return document.querySelector(selector).appendChild(Card(ele))
+    document.querySelector(selector).appendChild(Card(ele))
   })
   })
   .catch(err => console.error(err));
