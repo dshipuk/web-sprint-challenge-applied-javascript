@@ -1,3 +1,5 @@
+import data from '../mocks/data.js'
+
 const Tabs = (topics) => {
   // TASK 3
   // ---------------------
@@ -15,14 +17,18 @@ const Tabs = (topics) => {
   //
 
   const topic = document.createElement("div");
-  const tab1 = document.createElement("div");
-  const tab2 = document.createElement("div");
-  const tab3 = document.createElement("div");
 
-  
+  topic.classList.add("topics")
 
+  topics.forEach(topicArray => {
+    const tab = document.createElement("div")
+    tab.classList.add("tab")
+    tab.textContent = topicArray
+    topic.appendChild(tab)
+  });
+
+  return topic
 }
-
 const tabsAppender = (selector) => {
   // TASK 4
   // ---------------------
@@ -31,6 +37,7 @@ const tabsAppender = (selector) => {
   // Find the array of topics inside the response, and create the tabs using the Tabs component.
   // Append the tabs to the element in the DOM that matches the selector passed to the function.
   //
+  return document.querySelector(selector).appendChild(Tabs(data.topics.topics))
 }
 
 export { Tabs, tabsAppender }
